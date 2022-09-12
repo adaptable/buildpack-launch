@@ -7,3 +7,7 @@ api = "0.6"
 
 [[stacks]]
   id = "*"
+
+[metadata]
+  include-files = ["build/build", "bin/detect", "bin/jsontoml"]
+
