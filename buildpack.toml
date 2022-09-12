@@ -1,7 +1,7 @@
 api = "0.6"
 
 [buildpack]
-  id = "mterrel/launch"
+  id = "io.adaptable/buildpack-launch"
   version = "0.0.1"
   description = "Provides launch configuration"
 
