@@ -1,0 +1,9 @@
+api = "0.6"
+
+[buildpack]
+  id = "mterrel/launch"
+  version = "0.0.1"
+  description = "Provides launch configuration"
+
+[[stacks]]
+  id = "*"
