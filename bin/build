@@ -11,15 +11,14 @@ if [[ -z "${BP_LAUNCH_COMMAND-}" ]]; then
   exit 0
 fi
 
+BIN_DIR=$(dirname "${BASH_SOURCE[0]}")
+
 echo "  Assigning launch process: ${BP_LAUNCH_COMMAND}"
-#DEBUG
-pwd
-ls
 
 cat > "${CNB_BP_LAYERS_DIR}/launch.toml" <<EOF
 [[processes]]
 type = "web"
-command = $(echo -n "${BP_LAUNCH_COMMAND}" | ./bin/jsontoml)
+command = $(echo -n "${BP_LAUNCH_COMMAND}" | ${BIN_DIR}/jsontoml)
 default = true
 EOF
 
