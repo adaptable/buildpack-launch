@@ -4,10 +4,20 @@ set -euo pipefail
 
 CNB_BP_LAYERS_DIR="$1"
 
-launch_file="${BP_LAUNCH_CONFIG_PATH:-launch.toml}"
+echo "Adaptable Launch Buildpack"
 
-if [[ -f "${launch_file}" ]]; then
-  cp "${launch_file}" "${CNB_BP_LAYERS_DIR}/launch.toml"
+if [[ -z "${BP_LAUNCH_COMMAND-}" ]]; then
+  echo "  No launch command set"
+  exit 0
 fi
+
+echo "  Assigning launch process: ${BP_LAUNCH_COMMAND}"
+
+cat > "${CNB_BP_LAYERS_DIR}/launch.toml" <<EOF
+[[processes]]
+type = "web"
+command = $(echo -n "${BP_LAUNCH_COMMAND}" | ./jsontoml)
+default = true
+EOF
 
 exit 0
