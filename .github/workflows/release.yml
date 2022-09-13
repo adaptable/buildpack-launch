@@ -36,7 +36,7 @@ jobs:
                 #echo "::set-output name=package::${ESCAPED_ID}_${VERSION}.cnb"
               shell: bash
               env:
-                REPO: ${{ secrets.DOCKER_USERNAME }}
+                REPO: ${{ secrets.DOCKER_REPO }}
             #- id: register
             #  uses: docker://ghcr.io/buildpacks/actions/registry/request-add-entry:4.2.0
             #  with:
